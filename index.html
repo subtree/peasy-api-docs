@@ -347,15 +347,18 @@
               </ul>
           </li>
           <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2022-01-18" class="toc-h2 toc-link" data-title="2022-01-18">2022-01-18</a>
+                  </li>
                   <li>
                     <a href="#2022-01-13" class="toc-h2 toc-link" data-title="2022-01-13">2022-01-13</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -374,16 +377,27 @@
 <p>If you ever have questions, don&#39;t hesistate to <a href="mailto:support@peasy.nu">contact us</a>.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>To authorize, either supply your secret API_KEY in an Authorization header or as a query parameter. </p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"https://v3.api.peasy.nu/api/whoami"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: YOUR_SECRET_API_KEY"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: apikey YOUR_SECRET_API_KEY"</span>
+
+<span class="c"># Alternatively, you can use supply the API_KEY_ as a query parameter, but this is </span>
+<span class="c"># not recommended as the API_KEY is more likely to be exposed to the public due to </span>
+<span class="c"># it being shown in history files etc.</span>
+curl <span class="s2">"https://v3.api.peasy.nu/api/whoami?apikey=YOUR_SECRET_API_KEY"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
 
+<span class="c1">// Recommended way to pass the API_KEY is using a header</span>
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://v3.api.peasy.nu/api/whoami</span><span class="dl">'</span>
 <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> 
-  <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">YOUR_SECRET_API_KEY</span><span class="dl">'</span> <span class="p">}</span> <span class="p">})</span>
+  <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="nx">Authorization</span><span class="dl">'</span><span class="s1">: </span><span class="dl">'</span><span class="nx">apikey</span> <span class="dl">'</span><span class="s1"> + </span><span class="dl">'</span><span class="nx">YOUR_SECRET_API_KEY</span><span class="dl">'</span><span class="s1"> } })
+console.log(response.data)
+
+// Alternatively, you can use the query parameter
+const url = </span><span class="dl">'</span><span class="na">https</span><span class="p">:</span><span class="c1">//v3.api.peasy.nu/api/whoami?apikey=YOUR_SECRET_API_KEY'</span>
+<span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
@@ -400,14 +414,14 @@ curl <span class="s2">"https://v3.api.peasy.nu/api/whoami"</span> <span class="s
 <p>Make sure to replace <code>YOUR_SECRET_API_KEY</code> with your API key. </p>
 </blockquote>
 
-<p>Peasy.nu expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Peasy.nu expects the API key to be included in all API requests to the server either in a query parameter or in a header that looks like the following:</p>
 
-<p><code>Authorization: YOUR_SECRET_API_KEY</code></p>
+<p><code>Authorization: apikey YOUR_SECRET_API_KEY</code></p>
 
 <p>You can request a Peasy.nu API key by <a href="mailto:support@peasy.nu">contacting us</a>.</p>
 
 <aside class="notice">
-You must replace <code>YOUR_SECRET_API_KEY</code> with your personal API key.
+In all instances, you must replace <code>YOUR_SECRET_API_KEY</code> with your own, personal API key.
 </aside>
 <h1 id='testing-your-connection'>Testing your connection</h1><h2 id='ping'>Ping</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v3.api.peasy.nu/api/ping"</span> 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
@@ -424,15 +438,27 @@ You must replace <code>YOUR_SECRET_API_KEY</code> with your personal API key.
 <p>This endpoint is the only one that doesn&#39;t require authentication, and is provided as a convinience to make sure you can access the API at all. </p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://v3.api.peasy.nu/api/ping</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>format</td>
+<td>The format of the results. Must be either <code>json</code> or <code>csv</code>. Default is <code>json</code>.</td>
+</tr>
+</tbody></table>
 <h2 id='who-am-i'>Who Am I?</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v3.api.peasy.nu/api/whoami"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: YOUR_SECRET_API_KEY"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: apikey YOUR_SECRET_API_KEY"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://v3.api.peasy.nu/api/whoami</span><span class="dl">'</span>
 <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> 
-  <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">YOUR_SECRET_API_KEY</span><span class="dl">'</span> <span class="p">}</span> <span class="p">})</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
-</code></pre></div>
+  <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="nx">Authorization</span><span class="dl">'</span><span class="s1">: </span><span class="dl">'</span><span class="nx">apikey</span> <span class="dl">'</span><span class="s1"> + </span><span class="dl">'</span><span class="nx">YOUR_SECRET_API_KEY</span><span class="dl">'</span><span class="s1"> } })
+console.log(response.data)
+</span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -441,15 +467,27 @@ You must replace <code>YOUR_SECRET_API_KEY</code> with your personal API key.
 <p>Secured endpoint to make sure your <code>API_KEY</code> is valid and that you are correctly identified as a user.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://v3.api.peasy.nu/api/whoami</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>format</td>
+<td>The format of the results. Must be either <code>json</code> or <code>csv</code>. Default is <code>json</code>.</td>
+</tr>
+</tbody></table>
 <h1 id='reading-statistics'>Reading statistics</h1><h2 id='get-stats'>Get stats</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v3.api.peasy.nu/api/stats?startDate=2021-07-30&amp;period=DAY&amp;format=json&amp;currency=EUR"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: YOUR_SECRET_API_KEY"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: apikey YOUR_SECRET_API_KEY"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://v3.api.peasy.nu/api/stats?startDate=2021-07-30&amp;period=DAY&amp;format=json&amp;currency=EUR</span><span class="dl">'</span>
 <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> 
-  <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">YOUR_SECRET_API_KEY</span><span class="dl">'</span> <span class="p">}</span> <span class="p">})</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
-</code></pre></div>
+  <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="nx">Authorization</span><span class="dl">'</span><span class="s1">: </span><span class="dl">'</span><span class="nx">apikey</span> <span class="dl">'</span><span class="s1"> + </span><span class="dl">'</span><span class="nx">YOUR_SECRET_API_KEY</span><span class="dl">'</span><span class="s1"> } })
+console.log(response.data)
+</span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -476,10 +514,10 @@ You must replace <code>YOUR_SECRET_API_KEY</code> with your personal API key.
 </span></code></pre></div>
 <p>This commands retrieves statistics for a given period, similar to what the stats email delivers. All monetary values are expressed as cents, meaning <code>1 EUR</code> would be represented as <code>100</code>.</p>
 
-<aside class="warning">All stats is currently stored internally in SEK, and when you select another currency, we use the ECB exchange rate for the <code>startDate</code>. If the rate has shifted meaningfully during a week or month, this may lead to unexpected values.</aside>
+<aside class="warning">All stats is currently stored internally in <code>SEK</code>, and when you select another currency, we use the ECB exchange rate for the <code>startDate</code>. If you read a <code>WEEK</code> or <code>MONTH</code> period and the rate has shifted meaningfully during the period, this may lead to unexpected values.</aside>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://v3.api.peasy.nu/api/stats</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -503,29 +541,73 @@ You must replace <code>YOUR_SECRET_API_KEY</code> with your personal API key.
 <td>The currency to display all monetary values in. Uses the official ECB exchange rate for the order date. Default is <code>SEK</code>.</td>
 </tr>
 </tbody></table>
-<h1 id='reading-order-data'>Reading order data</h1><h2 id='get-orders'>Get orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v3.api.peasy.nu/api/orders?startDate=2021-07-30&amp;endDate=2021-07-30&amp;format=json&amp;currency=EUR"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: YOUR_SECRET_API_KEY"</span>
+<h1 id='reading-order-data'>Reading order data</h1><h2 id='get-orders'>Get orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v3.api.peasy.nu/api/orders?startDate=2021-07-30&amp;endDate=2021-07-30&amp;format=json&amp;currency=EUR&amp;includeItems=true"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: apikey YOUR_SECRET_API_KEY"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://v3.api.peasy.nu/api/orders?startDate=2021-07-30&amp;endDate=2021-07-30&amp;format=json&amp;currency=EUR</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://v3.api.peasy.nu/api/orders?startDate=2021-07-30&amp;endDate=2021-07-30&amp;format=json&amp;currency=EUR&amp;includeItems=true</span><span class="dl">'</span>
 <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> 
-  <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">YOUR_SECRET_API_KEY</span><span class="dl">'</span> <span class="p">}</span> <span class="p">})</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
-</code></pre></div>
+  <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="nx">Authorization</span><span class="dl">'</span><span class="s1">: </span><span class="dl">'</span><span class="nx">apikey</span> <span class="dl">'</span><span class="s1"> + </span><span class="dl">'</span><span class="nx">YOUR_SECRET_API_KEY</span><span class="dl">'</span><span class="s1"> } })
+console.log(response.data)
+</span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="nl">"orderDateTime"</span><span class="p">:</span><span class="s2">"2021-06-01T09:46:36.000+02:00"</span><span class="p">,</span><span class="nl">"orderId"</span><span class="p">:</span><span class="s2">"6229"</span><span class="p">,</span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="nl">"orderDateTime"</span><span class="p">:</span><span class="s2">"2021-06-01T15:50:16.000+02:00"</span><span class="p">,</span><span class="nl">"orderId"</span><span class="p">:</span><span class="s2">"7863"</span><span class="p">,</span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="mf">61240.08</span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="nl">"orderDateTime"</span><span class="p">:</span><span class="s2">"2021-06-01T10:59:55.000+02:00"</span><span class="p">,</span><span class="nl">"orderId"</span><span class="p">:</span><span class="s2">"8245"</span><span class="p">,</span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="mf">182565.2</span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="nl">"orderDateTime"</span><span class="p">:</span><span class="s2">"2021-06-01T09:10:00.000+02:00"</span><span class="p">,</span><span class="nl">"orderId"</span><span class="p">:</span><span class="s2">"8293"</span><span class="p">,</span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="mf">82443.1</span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-01T15:50:16.000+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7863"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOOBAR"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green shirt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-01T10:59:55.000+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8245"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">182565</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58008"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green shirt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735928559"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Black Pants"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">121325</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-01T09:10:00.000+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8293"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">82443</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1337"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Windbreaker"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">82443</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This commands retrieves some data about all orders for the date period specified. All monetary values are expressed as cents, meaning <code>1 EUR</code> would be represented as <code>100</code>.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://v3.api.peasy.nu/api/orders</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -545,16 +627,14 @@ You must replace <code>YOUR_SECRET_API_KEY</code> with your personal API key.
 <td>The format of the results. Must be either <code>json</code> or <code>csv</code>. Default is <code>json</code>.</td>
 </tr>
 <tr>
+<td>includeItems</td>
+<td>Return data on items for all orders. Must be either <code>true</code> or <code>false</code>. Default is <code>false</code>. If set to <code>true</code> and format is <code>csv</code>, the response will include 1 row per item (instead of the default 1 row per order), thereby possibly duplicating common order data.</td>
+</tr>
+<tr>
 <td>currency</td>
 <td>The currency to display all monetary values in. Uses the official ECB exchange rate for the order date. Default is <code>SEK</code>.</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1><h3 id='2022-01-13'>2022-01-13</h3>
-<ul>
-<li>Initial release</li>
-</ul>
-
-<p><small>Copyright 2022 Peasy.nu</small></p>
 <h1 id='errors'>Errors</h1>
 <p>The API uses the following error codes:</p>
 
@@ -581,6 +661,20 @@ You must replace <code>YOUR_SECRET_API_KEY</code> with your personal API key.
 <td>Internal Server Error -- We have a problem with our server. Try again later and if the problem persists, contact us.</td>
 </tr>
 </tbody></table>
+<h1 id='changelog'>Changelog</h1><h3 id='2022-01-18'>2022-01-18</h3>
+<ul>
+<li>Authorization header now expects type of <code>apikey</code> as prefix before the actual <code>API_KEY</code></li>
+<li>Added support for specifying the <code>API_KEY</code> as a query parameter</li>
+<li>Remove fractions from monetary values (since they are all in cents) </li>
+<li>Add possibility to retrieve item data in order items as part of call to <code>/orders</code> by specifiying <code>includeItems=true</code> as a query parameter</li>
+<li>Added support for the <code>format</code> query parameter for all endpoints</li>
+</ul>
+<h3 id='2022-01-13'>2022-01-13</h3>
+<ul>
+<li>Initial release</li>
+</ul>
+
+<p><small>Copyright 2022 Peasy.nu</small></p>
 
       </div>
       <div class="dark-box">
