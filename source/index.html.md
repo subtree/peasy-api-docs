@@ -214,6 +214,7 @@ startDate | The first date of the period to fetch stats for. When requesting for
 period | What period to fetch stats for. Must be either `DAY`, `WEEK` or `MONTH`. Default is `DAY`.
 format | The format of the results. Must be either `json` or `csv`. Default is `json`.
 currency | The currency to display all monetary values in. Uses the official ECB exchange rate for the order date. Default is `SEK`.
+decimalSeparator | The decimal separator to use when formatting floating point values. Default is `.`. Only used when `format` is `csv`.
 
 
 # Reading order data
@@ -305,6 +306,7 @@ endDate | The last date to include in the results. Default is today.
 format | The format of the results. Must be either `json` or `csv`. Default is `json`.
 includeItems | Return data on items for all orders. Must be either `true` or `false`. Default is `false`. If set to `true` and format is `csv`, the response will include 1 row per item (instead of the default 1 row per order), thereby possibly duplicating common order data.
 currency | The currency to display all monetary values in. Uses the official ECB exchange rate for the order date. Default is `SEK`.
+decimalSeparator | The decimal separator to use when formatting floating point values. Default is `.`. Only used when `format` is `csv`.
 
 # Errors
 
@@ -320,6 +322,9 @@ Error&nbsp;Code | Meaning
 
 
 # Changelog
+
+### 2022-03-10
+* Added `useCommaSeparator` parameter to `GET /api/stats` and `GET /api/orders` that enables the use of a comma as decimal separator. Useful for European users. Default is `false`.
 
 ### 2022-01-18
 * Authorization header now expects type of `apikey` as prefix before the actual `API_KEY`
