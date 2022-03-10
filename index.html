@@ -354,6 +354,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2022-03-10" class="toc-h2 toc-link" data-title="2022-03-10">2022-03-10</a>
+                  </li>
+                  <li>
                     <a href="#2022-01-18" class="toc-h2 toc-link" data-title="2022-01-18">2022-01-18</a>
                   </li>
                   <li>
@@ -541,6 +544,10 @@ console.log(response.data)
 <td>currency</td>
 <td>The currency to display all monetary values in. Uses the official ECB exchange rate for the order date. Default is <code>SEK</code>.</td>
 </tr>
+<tr>
+<td>decimalSeparator</td>
+<td>The decimal separator to use when formatting floating point values. Default is <code>.</code>. Only used when <code>format</code> is <code>csv</code>.</td>
+</tr>
 </tbody></table>
 <h1 id='reading-order-data'>Reading order data</h1><h2 id='get-orders'>Get orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://v3.api.peasy.nu/api/orders?startDate=2021-07-30&amp;endDate=2021-07-30&amp;format=json&amp;currency=EUR&amp;includeItems=true"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: apikey YOUR_SECRET_API_KEY"</span>
@@ -635,6 +642,10 @@ console.log(response.data)
 <td>currency</td>
 <td>The currency to display all monetary values in. Uses the official ECB exchange rate for the order date. Default is <code>SEK</code>.</td>
 </tr>
+<tr>
+<td>decimalSeparator</td>
+<td>The decimal separator to use when formatting floating point values. Default is <code>.</code>. Only used when <code>format</code> is <code>csv</code>.</td>
+</tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>The API uses the following error codes:</p>
@@ -662,7 +673,11 @@ console.log(response.data)
 <td>Internal Server Error -- We have a problem with our server. Try again later and if the problem persists, contact us.</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1><h3 id='2022-01-18'>2022-01-18</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='2022-03-10'>2022-03-10</h3>
+<ul>
+<li>Added <code>useCommaSeparator</code> parameter to <code>GET /api/stats</code> and <code>GET /api/orders</code> that enables the use of a comma as decimal separator. Useful for European users. Default is <code>false</code>.</li>
+</ul>
+<h3 id='2022-01-18'>2022-01-18</h3>
 <ul>
 <li>Authorization header now expects type of <code>apikey</code> as prefix before the actual <code>API_KEY</code></li>
 <li>Added support for specifying the <code>API_KEY</code> as a query parameter</li>
