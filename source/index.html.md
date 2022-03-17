@@ -245,12 +245,18 @@ console.log(response.data)
     "orderId": "7863",
     "orderItemsCount": 1,
     "totalCostExcludingVAT": 61240,
+    "totalValueExcludingVAT": 61240,
+    "totalDiscountExcludingVAT": 0,
+    "freightCostExcludingVAT": 0,
+    "paymentCostExcludingVAT": 0,
     "items": [
       {
         "id": "FOOBAR",
         "name": "Green shirt",
         "quantity": 1,
-        "totalPriceExcludingVAT": 61240
+        "totalPriceExcludingVAT": 61240,
+        "listPriceExcludingVAT": 61240,
+        "discountExcludingVAT": 0
       }
     ]
   },
@@ -258,19 +264,27 @@ console.log(response.data)
     "orderDateTime": "2021-06-01T10:59:55.000+02:00",
     "orderId": "8245",
     "orderItemsCount": 2,
-    "totalCostExcludingVAT": 182565,
+    "totalCostExcludingVAT": 172565,
+    "totalValueExcludingVAT": 182565,
+    "totalDiscountExcludingVAT": 10000,
+    "freightCostExcludingVAT": 0,
+    "paymentCostExcludingVAT": 0,
     "items": [
       {
         "id": "58008",
         "name": "Green shirt",
         "quantity": 1,
-        "totalPriceExcludingVAT": 61240
+        "totalPriceExcludingVAT": 61240,
+        "listPriceExcludingVAT": 71240,
+        "discountExcludingVAT": 10000
       },
       {
         "id": "3735928559",
         "name": "Black Pants",
         "quantity": 1,
-        "totalPriceExcludingVAT": 121325
+        "totalPriceExcludingVAT": 121325,
+        "listPriceExcludingVAT": 121325,
+        "discountExcludingVAT": 0
       }
     ]
   },
@@ -279,12 +293,18 @@ console.log(response.data)
     "orderId": "8293",
     "orderItemsCount": 1,
     "totalCostExcludingVAT": 82443,
+    "totalValueExcludingVAT": 82443,
+    "totalDiscountExcludingVAT": 0,
+    "freightCostExcludingVAT": 0,
+    "paymentCostExcludingVAT": 0,
     "items": [
       {
         "id": "1337",
         "name": "Windbreaker",
         "quantity": 1,
-        "totalPriceExcludingVAT": 82443
+        "totalPriceExcludingVAT": 82443,
+        "listPriceExcludingVAT": 82443,
+        "discountExcludingVAT": 0
       }
     ]
   }
@@ -307,6 +327,7 @@ format | The format of the results. Must be either `json` or `csv`. Default is `
 includeItems | Return data on items for all orders. Must be either `true` or `false`. Default is `false`. If set to `true` and format is `csv`, the response will include 1 row per item (instead of the default 1 row per order), thereby possibly duplicating common order data.
 currency | The currency to display all monetary values in. Uses the official ECB exchange rate for the order date. Default is `SEK`.
 decimalSeparator | The decimal separator to use when formatting floating point values. Default is `.`. Only used when `format` is `csv`.
+fetchCancelledOrders | Fetch orders with all possible statuses, not only `PROCESSING` and `COMPLETED`. Default is `false`.
 
 # Errors
 
@@ -322,6 +343,17 @@ Error&nbsp;Code | Meaning
 
 
 # Changelog
+
+### 2022-03-17
+* Added more data on `GET /api/orders`:
+  * `orderStatus`
+  * `totalValueExcludingVAT`
+  * `totalDiscountExcludingVAT`
+  * `freightCostExcludingVAT`
+  * `paymentCostExcludingVAT`
+  * `item[].listPriceExcludingVAT`
+  * `item[].discountExcludingVAT`
+* Now possible to list orders with all possible `orderStatus`. Add `fetchCancelledOrders=true` to the URL parameters for `GET /api/orders`.
 
 ### 2022-03-10
 * Added `useCommaSeparator` parameter to `GET /api/stats` and `GET /api/orders` that enables the use of a comma as decimal separator. Useful for European users. Default is `false`.
