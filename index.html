@@ -354,6 +354,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2022-03-17" class="toc-h2 toc-link" data-title="2022-03-17">2022-03-17</a>
+                  </li>
+                  <li>
                     <a href="#2022-03-10" class="toc-h2 toc-link" data-title="2022-03-10">2022-03-10</a>
                   </li>
                   <li>
@@ -567,12 +570,18 @@ console.log(response.data)
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7863"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalValueExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalDiscountExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"freightCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOOBAR"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green shirt"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="w">
+        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"listPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discountExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -580,19 +589,27 @@ console.log(response.data)
     </span><span class="nl">"orderDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-01T10:59:55.000+02:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8245"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">182565</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">172565</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalValueExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">182565</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalDiscountExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"freightCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58008"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green shirt"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="w">
+        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">61240</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"listPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">71240</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discountExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735928559"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Black Pants"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">121325</span><span class="w">
+        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">121325</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"listPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">121325</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discountExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -601,12 +618,18 @@ console.log(response.data)
     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8293"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"orderItemsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">82443</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalValueExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">82443</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalDiscountExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"freightCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentCostExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1337"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Windbreaker"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">82443</span><span class="w">
+        </span><span class="nl">"totalPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">82443</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"listPriceExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">82443</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discountExcludingVAT"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -646,6 +669,10 @@ console.log(response.data)
 <td>decimalSeparator</td>
 <td>The decimal separator to use when formatting floating point values. Default is <code>.</code>. Only used when <code>format</code> is <code>csv</code>.</td>
 </tr>
+<tr>
+<td>fetchCancelledOrders</td>
+<td>Fetch orders with all possible statuses, not only <code>PROCESSING</code> and <code>COMPLETED</code>. Default is <code>false</code>.</td>
+</tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>The API uses the following error codes:</p>
@@ -673,7 +700,22 @@ console.log(response.data)
 <td>Internal Server Error -- We have a problem with our server. Try again later and if the problem persists, contact us.</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1><h3 id='2022-03-10'>2022-03-10</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='2022-03-17'>2022-03-17</h3>
+<ul>
+<li>Added more data on <code>GET /api/orders</code>:
+
+<ul>
+<li><code>orderStatus</code></li>
+<li><code>totalValueExcludingVAT</code></li>
+<li><code>totalDiscountExcludingVAT</code></li>
+<li><code>freightCostExcludingVAT</code></li>
+<li><code>paymentCostExcludingVAT</code></li>
+<li><code>item[].listPriceExcludingVAT</code></li>
+<li><code>item[].discountExcludingVAT</code></li>
+</ul></li>
+<li>Now possible to list orders with all possible <code>orderStatus</code>. Add <code>fetchCancelledOrders=true</code> to the URL parameters for <code>GET /api/orders</code>.</li>
+</ul>
+<h3 id='2022-03-10'>2022-03-10</h3>
 <ul>
 <li>Added <code>useCommaSeparator</code> parameter to <code>GET /api/stats</code> and <code>GET /api/orders</code> that enables the use of a comma as decimal separator. Useful for European users. Default is <code>false</code>.</li>
 </ul>
